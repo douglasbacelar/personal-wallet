@@ -1,6 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // Esse reducer será responsável por tratar as informações da pessoa usuária
-import { USER_LOGIN } from '../actions/index';
+import { COIN_TYPES } from '../actions/index';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -11,11 +11,10 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case USER_LOGIN:
+  case COIN_TYPES:
     return {
       ...state,
-      name: action.payload.name,
-      isLogged: action.payload.isLogged,
+      currencies: action.payload,
     };
   default:
     return state;
