@@ -1,6 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // Esse reducer será responsável por tratar as informações da pessoa usuária
-import { COIN_TYPES, SUM_EXPENSES } from '../actions/index';
+import { COIN_TYPES, ADD_EXPENSES, GET_DATA, SUM_EXPENSES } from '../actions/index';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -16,10 +16,20 @@ const userReducer = (state = INITIAL_STATE, action) => {
       ...state,
       currencies: action.payload,
     };
-  case SUM_EXPENSES:
+  case ADD_EXPENSES:
     return {
       ...state,
       expenses: [...state.expenses, action.payload],
+    };
+  case GET_DATA:
+    return {
+      ...state,
+      exchangeRates: action.payload,
+    };
+  case SUM_EXPENSES:
+    return {
+      ...state,
+      total: action.payload,
     };
   default:
     return state;
