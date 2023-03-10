@@ -8,8 +8,8 @@ class Header extends Component {
     return (
       <div>
         <h4 data-testid="email-field">{userEmail}</h4>
-        <h4 data-testid="header-currency-field">BRL</h4>
         <h4 data-testid="total-field">0</h4>
+        <h4 data-testid="header-currency-field">BRL</h4>
       </div>
     );
   }

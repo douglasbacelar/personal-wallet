@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { userLogin } from '../redux/actions';
+import { handleAction, USER_LOGIN } from '../redux/actions';
 
 class Login extends React.Component {
   state = {
@@ -9,10 +9,10 @@ class Login extends React.Component {
     userPassword: '',
   };
 
-  handleClick = async () => {
+  handleClick = () => {
     const { email } = this.state;
     const { history, dispatch } = this.props;
-    dispatch(userLogin(email));
+    dispatch(handleAction(USER_LOGIN, email));
     history.push('/carteira');
   };
 
