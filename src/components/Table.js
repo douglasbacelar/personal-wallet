@@ -21,47 +21,56 @@ class Table extends Component {
           </tr>
         </thead>
         <tbody>
-          {infoExpenses.map((expense) => (
-
-            <tr key={ expense.id }>
-              <td>
-                {' '}
-                {expense.description}
-              </td>
-              <td>
-                {' '}
-                {expense.tag}
-              </td>
-              <td>
-                {' '}
-                {expense.method}
-              </td>
-              <td>
-                {' '}
-                {expense.value}
-              </td>
-              <td>
-                {' '}
-                BRL
-              </td>
-              <td>
-                {' '}
-                Verificar
-              </td>
-              <td>
-                {' '}
-                Verificar
-              </td>
-              <td>
-                {' '}
-                {expense.currency}
-              </td>
-              <td>
-                {' '}
-                Verificar
-              </td>
-            </tr>
-          ))}
+          {infoExpenses.map((expense) => {
+            const exchangeUsed = Number(expense.exchangeRates[expense.currency].ask)
+              .toFixed(2);
+            const valueConversion = Number((expense.value)
+            * expense.exchangeRates[expense.currency].ask).toFixed(2);
+            return (
+              <tr key={ expense.id }>
+                <td>
+                  {' '}
+                  {expense.description}
+                </td>
+                <td>
+                  {' '}
+                  {expense.tag}
+                </td>
+                <td>
+                  {' '}
+                  {expense.method}
+                </td>
+                <td>
+                  {' '}
+                  {parseFloat(expense.value).toFixed(2)}
+                </td>
+                <td>
+                  {' '}
+                  {expense.exchangeRates[expense.currency].name}
+                </td>
+                <td>
+                  {' '}
+                  {exchangeUsed}
+                </td>
+                <td>
+                  {' '}
+                  {valueConversion}
+                </td>
+                <td>
+                  {' '}
+                  Real
+                </td>
+                <td>
+                  <button>
+                    Excluir
+                  </button>
+                  <button>
+                    Editar
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     );
