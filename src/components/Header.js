@@ -30,7 +30,14 @@ const mapStateToProps = (state) => ({
 
 Header.propTypes = {
   userEmail: PropTypes.string.isRequired,
-  sumValues: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  sumValues: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    value: PropTypes.string,
+    description: PropTypes.string,
+    currency: PropTypes.string,
+    method: PropTypes.string,
+    tag: PropTypes.string,
+  })).isRequired,
 };
 
 export default connect(mapStateToProps)(Header);

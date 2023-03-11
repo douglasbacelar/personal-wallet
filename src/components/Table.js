@@ -6,7 +6,6 @@ import { handleAction, DELETE_EXPENSES } from '../redux/actions';
 class Table extends Component {
   deleteButton = (teste) => {
     const { infoExpenses, dispatch } = this.props;
-    console.log(infoExpenses);
     const deleteExpense = infoExpenses.filter((remove) => remove.id !== teste);
     dispatch(handleAction(DELETE_EXPENSES, deleteExpense));
   };
@@ -75,7 +74,9 @@ class Table extends Component {
                   >
                     Excluir
                   </button>
-                  <button>
+                  <button
+                    data-testid="edit-btn"
+                  >
                     Editar
                   </button>
                 </td>
