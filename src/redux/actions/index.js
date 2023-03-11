@@ -2,6 +2,7 @@
 export const USER_LOGIN = 'USER_LOGIN';
 export const COIN_TYPES = 'COIN_TYPES';
 export const ADD_EXPENSES = 'ADD_EXPENSES';
+export const DELETE_EXPENSES = 'DELETE_EXPENSES';
 export const GET_DATA = 'GET_DATA';
 export const SUM_EXPENSES = 'GET_DATA';
 
