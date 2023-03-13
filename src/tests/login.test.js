@@ -16,7 +16,6 @@ describe('Testes para a página Login', () => {
 
   test('Ter apenas um botão na página e 2 inputs', () => {
     renderWithRouterAndRedux(<Login />);
-    // const inputs = screen.getAllByRole('textbox');
     const emailInput = screen.getByLabelText('Email:');
     expect(emailInput).toBeInTheDocument();
     const passwordInput = screen.getByLabelText('Password:');
