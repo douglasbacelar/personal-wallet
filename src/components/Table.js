@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { editExpense, DELETE_EXPENSES } from '../redux/actions';
+import { editExpense, DELETE_EXPENSES, handleAction } from '../redux/actions';
 
 class Table extends Component {
   deleteButton = (teste) => {

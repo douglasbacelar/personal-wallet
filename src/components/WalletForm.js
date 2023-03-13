@@ -27,7 +27,7 @@ class WalletForm extends Component {
     dispatch(refreshCurrencies(this.state));
     this.setState((previewState) => ({
       id: previewState.id + 1,
-      value: 0,
+      value: '',
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
@@ -51,7 +51,7 @@ class WalletForm extends Component {
     dispatch(arrayExpensesToEdit(obj));
     dispatch(editExpense(false, 0));
     this.setState({
-      value: 0,
+      value: '',
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
