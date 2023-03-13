@@ -19,7 +19,7 @@ class Login extends React.Component {
   emailValidate = () => {
     const { email } = this.state;
     const regex = /^[\w.]+@\w+.\w{2,}(?:.\w{2})?$/;
-    if (regex.test(email)) return true;
+    return regex.test(email);
   };
 
   render() {
@@ -31,6 +31,7 @@ class Login extends React.Component {
           <h1>Login</h1>
 
           <label htmlFor="userEmail" className="text-email">
+            Email:
             <input
               data-testid="email-input"
               type="email"
@@ -43,6 +44,7 @@ class Login extends React.Component {
           </label>
 
           <label htmlFor="userPassword" className="text-password">
+            Password:
             <input
               data-testid="password-input"
               type="password"
@@ -71,7 +73,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func,
+    push: PropTypes.func.isRequired,
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
 };

@@ -91,10 +91,11 @@ class WalletForm extends Component {
           </label>
 
           <label htmlFor="coin" className="form-select-coin">
-            Moeda:
+            Moeda
             <select
               data-testid="currency-input"
               className="form-select-coin"
+              id="coin"
               value={ currency }
               onChange={ (e) => this.setState({ currency: e.target.value }) }
               required
@@ -106,7 +107,7 @@ class WalletForm extends Component {
           </label>
 
           <label htmlFor="pay">
-            Método de pagamento:
+            Método de Pagamento
             <select
               id="pay"
               data-testid="method-input"
@@ -121,7 +122,7 @@ class WalletForm extends Component {
           </label>
 
           <label htmlFor="category">
-            Categoria:
+            Categoria
             <select
               id="category"
               data-testid="tag-input"
