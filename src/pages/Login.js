@@ -34,15 +34,13 @@ class Login extends React.Component {
             <input
               data-testid="email-input"
               type="email"
-              placeholder="Usuário"
+              placeholder="E-mail"
               id="userEmail"
               name="userEmail"
               onChange={ (e) => this.setState({ email: e.target.value }) }
             />
             {/* <span className="formField__error">{this.emailValidate()}</span> */}
           </label>
-
-          {console.log(this.emailValidate()) }
 
           <label htmlFor="userPassword" className="text-password">
             <input
