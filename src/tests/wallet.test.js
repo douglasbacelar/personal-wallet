@@ -7,6 +7,8 @@ import Wallet from '../pages/Wallet';
 import App from '../App';
 
 describe('Testes para a página Login', () => {
+  const userTest = 'teste@teste.com';
+
   test('Verifica se todos os inputs e o button estão na página corretamente', () => {
     const initialEntries = ['/carteira'];
     const { history } = renderWithRouterAndRedux(<Wallet />, { initialEntries });
@@ -31,7 +33,7 @@ describe('Testes para a página Login', () => {
   test('Teste se o fetch carregou as currencies no componentDidMount', async () => {
     const initialState = {
       user: {
-        email: 'teste@teste.com',
+        email: userTest,
       },
       wallet: {
         expenseTotal: 0,
@@ -58,7 +60,7 @@ describe('Testes para a página Login', () => {
   test('Teste se adiciona uma despesa corretamente no estado global', async () => {
     const initialState = {
       user: {
-        email: 'teste@teste.com',
+        email: userTest,
       },
       wallet: {
         expenseTotal: 0,
@@ -104,7 +106,7 @@ describe('Testes para a página Login', () => {
 
     const initialState = {
       user: {
-        email: 'teste@teste.com',
+        email: userTest,
       },
       wallet: {
         expenseTotal: 0,
@@ -131,5 +133,54 @@ describe('Testes para a página Login', () => {
     userEvent.click(deleteButton);
 
     expect(writeDescription).not.toBeInTheDocument();
+  });
+
+  test('Testa o botão de editar uma despesa', async () => {
+    const testExpense = {
+      id: 0,
+      value: '10',
+      description: 'teste',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      exchangeRates: mockData,
+    };
+
+    const initialState = {
+      user: {
+        email: userTest,
+      },
+      wallet: {
+        expenseTotal: 0,
+        currencies: [],
+        expenses: [testExpense],
+        editor: false,
+        idToEdit: 0,
+      },
+    };
+
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockData),
+    });
+
+    renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'], initialState });
+
+    const editButton = await screen.findByRole('button', { name: 'Editar' });
+    expect(editButton).toBeInTheDocument();
+
+    userEvent.click(editButton);
+
+    const expenseDescription = await screen.findByLabelText('Descrição');
+    expect(expenseDescription).toBeInTheDocument();
+
+    userEvent.type(expenseDescription, '15');
+
+    const editExp = screen.getByRole('button', { name: 'Editar despesa' });
+    expect(editExp).toBeInTheDocument();
+    userEvent.click(editExp);
+
+    const expenseNewDescription = await screen.findByText('15');
+    expect(expenseNewDescription).toBeInTheDocument();
   });
 });
