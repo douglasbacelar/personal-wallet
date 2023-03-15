@@ -6,6 +6,8 @@ import { renderWithRouterAndRedux } from './helpers/renderWith';
 import Login from '../pages/Login';
 
 describe('Testes para a página Login', () => {
+  const emailInput = screen.getByTestId('email-input');
+  const passwordInput = screen.getByTestId('password-input');
   test('Página inicial começa com a rota /', () => {
     const initialEntries = ['/'];
     const { history } = renderWithRouterAndRedux(<App />, { initialEntries });
@@ -16,9 +18,9 @@ describe('Testes para a página Login', () => {
 
   test('Ter apenas um botão na página e 2 inputs', () => {
     renderWithRouterAndRedux(<Login />);
-    const emailInput = screen.getByTestId('email-input');
+
     expect(emailInput).toBeInTheDocument();
-    const passwordInput = screen.getByTestId('password-input');
+
     expect(passwordInput).toBeInTheDocument();
 
     const button = screen.getByTestId('login-submit-button');
@@ -28,19 +30,18 @@ describe('Testes para a página Login', () => {
   test('Ao escrever e-mail e senha incorretamente, o botão não será habilitado', () => {
     renderWithRouterAndRedux(<App />);
     const inputs = screen.getAllByRole('textbox');
-    const emailInput = inputs[0];
-    const passwordInput = inputs[1];
+    const emailInputArray = inputs[0];
+    const passwordInputArray = inputs[1];
     const button = screen.getByTestId('login-submit-button');
 
-    userEvent.type(emailInput, 'testeteste.com');
-    userEvent.type(passwordInput, '123456');
+    userEvent.type(emailInputArray, 'testeteste.com');
+    userEvent.type(passwordInputArray, '123456');
     expect(button).toBeDisabled();
   });
 
   test('Ao escrever e-mail e senha corretamente, o botão será habilitado', () => {
     renderWithRouterAndRedux(<Login />);
-    const emailInput = screen.getByTestId('email-input');
-    const passwordInput = screen.getByTestId('password-input');
+
     const button = screen.getByRole('button');
 
     userEvent.type(emailInput, 'teste@teste.com');
@@ -51,8 +52,6 @@ describe('Testes para a página Login', () => {
   test('Testa se atualiza o estado global e navega para /carteira', () => {
     renderWithRouterAndRedux(<App />);
 
-    const emailInput = screen.getByTestId('email-input');
-    const passwordInput = screen.getByTestId('password-input');
     const button = screen.getByRole('button');
 
     userEvent.type(emailInput, 'teste@teste.com');

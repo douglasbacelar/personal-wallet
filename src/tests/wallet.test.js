@@ -8,6 +8,7 @@ import App from '../App';
 
 describe('Testes para a página Login', () => {
   const userTest = 'teste@teste.com';
+  const userDescription = 'Descrição da Despesa';
 
   test('Verifica se todos os inputs e o button estão na página corretamente', () => {
     const initialEntries = ['/carteira'];
@@ -16,7 +17,7 @@ describe('Testes para a página Login', () => {
     expect(pathname).toBe('/carteira');
 
     const expenseValue = screen.getByLabelText('Valor');
-    const expenseDescription = screen.getByLabelText('Descrição da Despesa');
+    const expenseDescription = screen.getByLabelText(userDescription);
     const expenseCurrency = screen.getByLabelText('Moeda');
     const expenseMethod = screen.getByLabelText('Método de Pagamento');
     const expenseTag = screen.getByLabelText('Categoria da despesa');
@@ -82,7 +83,7 @@ describe('Testes para a página Login', () => {
     expect(store.getState().wallet.expenses).toHaveLength(0);
 
     const expenseValue = screen.getByLabelText('Valor');
-    const expenseDescription = screen.getByLabelText('Descrição da Despesa');
+    const expenseDescription = screen.getByLabelText(userDescription);
     const addBtn = screen.getByRole('button');
 
     userEvent.type(expenseValue, 15);
@@ -171,7 +172,7 @@ describe('Testes para a página Login', () => {
 
     userEvent.click(editButton);
 
-    const expenseDescription = await screen.findByLabelText('Descrição da Despesa');
+    const expenseDescription = await screen.findByLabelText(userDescription);
     expect(expenseDescription).toBeInTheDocument();
 
     userEvent.type(expenseDescription, '15');
