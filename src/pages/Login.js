@@ -26,28 +26,37 @@ class Login extends React.Component {
     const { userPassword } = this.state;
     const minLength = 6;
     return (
-      <div>
-        <form>
-          <h1>Login</h1>
+      <div
+        className="bg-main-picture bg-green-500 relative
+        flex min-h-screen items-center justify-center"
+      >
+        <form className="bg-white px-16 py-12 rounded-2xl shadow-xl text-center">
+          <h1 className="text-blue-500 text-6xl mb-10">
+            Personal
+            {' '}
+            <span className="text-green-400 font-bold">Wallet</span>
+          </h1>
 
           <label htmlFor="userEmail" className="text-email">
-            Email:
             <input
               data-testid="email-input"
               type="email"
+              className="w-full block bg-slate-200
+               rounded p-2 mb-6 placeholder-blue-500"
               placeholder="E-mail"
               id="userEmail"
               name="userEmail"
               onChange={ (e) => this.setState({ email: e.target.value }) }
             />
-            {/* <span className="formField__error">{this.emailValidate()}</span> */}
+
           </label>
 
           <label htmlFor="userPassword" className="text-password">
-            Password:
             <input
               data-testid="password-input"
               type="password"
+              className="w-full block bg-slate-200
+              rounded p-2 mb-6 placeholder-blue-500"
               placeholder="Senha"
               id="userPassword"
               name="userPassword"
@@ -55,8 +64,15 @@ class Login extends React.Component {
             />
           </label>
 
+          <span className="text-red-400">
+            {(userPassword.length < minLength
+              || !this.emailValidate()) ? 'Verificar preenchimento de campos obrigatórios'
+              : ''}
+          </span>
+
           <button
-            className="btn-login"
+            className="bg-blue-500 p-3 w-full mt-4 rounded-lg shadow-xl
+            cursor-pointer hover:bg-blue-900"
             data-testid="login-submit-button"
             type="button"
             disabled={ (userPassword.length < minLength

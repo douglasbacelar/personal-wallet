@@ -6,8 +6,17 @@ class Header extends Component {
   render() {
     const { userEmail, sumValues } = this.props;
     return (
-      <div>
-        <h4 data-testid="email-field">{userEmail}</h4>
+      <div
+        className=" bg-gray-200 flex rounded-xl w-1037 h-482 left-40 top-0
+         justify-around absolute shadow-lg
+        "
+      >
+
+        <h1 className="text-blue-500 text-4xl mb-10 top-20">
+          Personal
+          {' '}
+          <span className="text-green-400 font-bold">Wallet</span>
+        </h1>
         <h4 data-testid="total-field">
           <div>
             {
@@ -17,7 +26,9 @@ class Header extends Component {
             }
           </div>
         </h4>
-        <h4 data-testid="header-currency-field">BRL</h4>
+        <span data-testid="header-currency-field">BRL</span>
+        <h4 data-testid="email-field">{userEmail}</h4>
+
       </div>
     );
   }

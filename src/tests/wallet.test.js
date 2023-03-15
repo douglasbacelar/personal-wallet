@@ -16,10 +16,10 @@ describe('Testes para a página Login', () => {
     expect(pathname).toBe('/carteira');
 
     const expenseValue = screen.getByLabelText('Valor');
-    const expenseDescription = screen.getByLabelText('Descrição');
+    const expenseDescription = screen.getByLabelText('Descrição da Despesa');
     const expenseCurrency = screen.getByLabelText('Moeda');
     const expenseMethod = screen.getByLabelText('Método de Pagamento');
-    const expenseTag = screen.getByLabelText('Categoria');
+    const expenseTag = screen.getByLabelText('Categoria da despesa');
     const button = screen.getByRole('button');
 
     expect(expenseValue).toBeInTheDocument();
@@ -82,7 +82,7 @@ describe('Testes para a página Login', () => {
     expect(store.getState().wallet.expenses).toHaveLength(0);
 
     const expenseValue = screen.getByLabelText('Valor');
-    const expenseDescription = screen.getByLabelText('Descrição');
+    const expenseDescription = screen.getByLabelText('Descrição da Despesa');
     const addBtn = screen.getByRole('button');
 
     userEvent.type(expenseValue, 15);
@@ -171,7 +171,7 @@ describe('Testes para a página Login', () => {
 
     userEvent.click(editButton);
 
-    const expenseDescription = await screen.findByLabelText('Descrição');
+    const expenseDescription = await screen.findByLabelText('Descrição da Despesa');
     expect(expenseDescription).toBeInTheDocument();
 
     userEvent.type(expenseDescription, '15');
@@ -180,7 +180,7 @@ describe('Testes para a página Login', () => {
     expect(editExp).toBeInTheDocument();
     userEvent.click(editExp);
 
-    const expenseNewDescription = await screen.findByText('15');
+    const expenseNewDescription = await screen.findByText('teste15');
     expect(expenseNewDescription).toBeInTheDocument();
   });
 });

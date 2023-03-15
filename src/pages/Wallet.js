@@ -6,8 +6,9 @@ import Table from '../components/Table';
 class Wallet extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Wallet</h1>
+      <div
+        className="bg-main-picture bg-green-500 min-h-screen"
+      >
         <Header />
         <WalletForm />
         <Table />

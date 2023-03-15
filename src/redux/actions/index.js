@@ -7,6 +7,7 @@ export const GET_DATA = 'GET_DATA';
 export const SUM_EXPENSES = 'GET_DATA';
 export const EDIT_EXPENSES = 'EDIT_EXPENSES';
 export const ARRAY_EXPENSES_TO_EDIT = 'ARRAY_EXPENSES_TO_EDIT';
+export const CAPTURE_EXPENSES_INPUT = 'CAPTURE_EXPENSES_INPUT';
 
 export const handleAction = (action, payload) => ({ type: action, payload });
 
@@ -19,6 +20,11 @@ export const editExpense = (bool, idToEdit) => ({
 export const arrayExpensesToEdit = (obj) => ({
   type: ARRAY_EXPENSES_TO_EDIT,
   payload: obj,
+});
+
+export const captureInput = (payload) => ({
+  type: CAPTURE_EXPENSES_INPUT,
+  payload,
 });
 
 export const walletCurrencies = () => async (dispatch) => {

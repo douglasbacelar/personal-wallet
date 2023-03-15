@@ -15,12 +15,30 @@ class WalletForm extends Component {
     method: 'Dinheiro',
     tag: generalTag,
     exchangeRates: {},
+    first: true,
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
     dispatch(walletCurrencies());
   }
+
+  componentDidUpdate(_prevProps, previewState) {
+    const { infoCaptured, editor } = this.props;
+    if (!this.checkinfo(previewState, infoCaptured) && editor && previewState.first) {
+      this.setState({
+        ...infoCaptured,
+        first: false,
+      });
+    }
+  }
+
+  checkinfo = (previewState, captureInfo) => {
+    const checkObject = Object.entries(previewState);
+    const checkAllObjects = checkObject.every(([key, value]) => (
+      value === captureInfo[key]));
+    return checkAllObjects;
+  };
 
   handleClick = () => {
     const { dispatch } = this.props;
@@ -57,6 +75,7 @@ class WalletForm extends Component {
       method: 'Dinheiro',
       tag: 'Alimentação',
       exchangeRates: {},
+      first: true,
     });
   };
 
@@ -64,7 +83,10 @@ class WalletForm extends Component {
     const { value, description, currency, method, tag } = this.state;
     const { coinType, editor } = this.props;
     return (
-      <div>
+      <div
+        className="relative flex rounded-xl w-1037 h-96 left-40 top-36
+      shadow-2xl justify-center "
+      >
         <form>
           <label htmlFor="coinValue" className="value-input">
             Valor
@@ -79,7 +101,7 @@ class WalletForm extends Component {
           </label>
 
           <label htmlFor="descriptionValue" className="description-input">
-            Descrição
+            Descrição da Despesa
             <input
               data-testid="description-input"
               type="text"
@@ -122,7 +144,7 @@ class WalletForm extends Component {
           </label>
 
           <label htmlFor="category">
-            Categoria
+            Categoria da despesa
             <select
               id="category"
               data-testid="tag-input"
@@ -165,6 +187,7 @@ const mapStateToProps = (state) => ({
   coinDetails: state.wallet.payload,
   editor: state.wallet.editor,
   idToEdit: state.wallet.idToEdit,
+  infoCaptured: state.wallet.captureEditInput,
 });
 
 WalletForm.propTypes = {
@@ -172,6 +195,7 @@ WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
   editor: PropTypes.bool.isRequired,
   idToEdit: PropTypes.number.isRequired,
+  infoCaptured: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default connect(mapStateToProps)(WalletForm);

@@ -16,9 +16,9 @@ describe('Testes para a página Login', () => {
 
   test('Ter apenas um botão na página e 2 inputs', () => {
     renderWithRouterAndRedux(<Login />);
-    const emailInput = screen.getByLabelText('Email:');
+    const emailInput = screen.getByTestId('email-input');
     expect(emailInput).toBeInTheDocument();
-    const passwordInput = screen.getByLabelText('Password:');
+    const passwordInput = screen.getByTestId('password-input');
     expect(passwordInput).toBeInTheDocument();
 
     const button = screen.getByTestId('login-submit-button');
@@ -39,8 +39,8 @@ describe('Testes para a página Login', () => {
 
   test('Ao escrever e-mail e senha corretamente, o botão será habilitado', () => {
     renderWithRouterAndRedux(<Login />);
-    const emailInput = screen.getByLabelText('Email:');
-    const passwordInput = screen.getByLabelText('Password:');
+    const emailInput = screen.getByTestId('email-input');
+    const passwordInput = screen.getByTestId('password-input');
     const button = screen.getByRole('button');
 
     userEvent.type(emailInput, 'teste@teste.com');
@@ -51,14 +51,14 @@ describe('Testes para a página Login', () => {
   test('Testa se atualiza o estado global e navega para /carteira', () => {
     renderWithRouterAndRedux(<App />);
 
-    const emailInput = screen.getByLabelText('Email:');
-    const passwordInput = screen.getByLabelText('Password:');
+    const emailInput = screen.getByTestId('email-input');
+    const passwordInput = screen.getByTestId('password-input');
     const button = screen.getByRole('button');
 
     userEvent.type(emailInput, 'teste@teste.com');
     userEvent.type(passwordInput, '123456');
     userEvent.click(button);
 
-    expect(screen.getByText('Wallet')).toBeInTheDocument();
+    expect(screen.getByText('Personal Wallet')).toBeInTheDocument();
   });
 });
