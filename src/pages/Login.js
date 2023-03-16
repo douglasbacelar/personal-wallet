@@ -27,10 +27,10 @@ class Login extends React.Component {
     const minLength = 6;
     return (
       <div
-        className="bg-main-picture bg-green-500 relative
+        className="bg-main-picture bg-cover bg-green-500 relative
         flex min-h-screen items-center justify-center"
       >
-        <form className="bg-white px-16 py-12 rounded-2xl shadow-xl text-center">
+        <form className="bg-white py-12 px-12 rounded-2xl shadow-xl text-center ">
           <h1 className="text-blue-500 text-6xl mb-10">
             Personal
             {' '}

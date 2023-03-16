@@ -84,26 +84,21 @@ class WalletForm extends Component {
     const { coinType, editor } = this.props;
     return (
       <div
-        className="relative flex rounded-xl w-1037 h-96 left-40 top-36
-      shadow-2xl justify-center "
+        className="items-center bg-gray-wallet flex
+        flex-row h-32 justify-center pl-28 pr-28 top-40 w-817 "
       >
-        <form>
-          <label htmlFor="coinValue" className="value-input">
-            Valor
-            <input
-              data-testid="value-input"
-              type="number"
-              id="coinValue"
-              name="coinValue"
-              value={ value }
-              onChange={ (e) => this.setState({ value: e.target.value }) }
-            />
-          </label>
+        <form className="flex flex-wrap h-20 justify-around">
 
-          <label htmlFor="descriptionValue" className="description-input">
+          <label
+            htmlFor="descriptionValue"
+            className="text-blue-wallet
+          text-base font-medium"
+          >
             Descrição da Despesa
             <input
               data-testid="description-input"
+              className="h-7 border-solid border-blue-wallet rounded-md m-2
+               text-blue-wallet aut"
               type="text"
               id="descriptionValue"
               name="descriptionValue"
@@ -111,44 +106,17 @@ class WalletForm extends Component {
               onChange={ (e) => this.setState({ description: e.target.value }) }
             />
           </label>
-
-          <label htmlFor="coin" className="form-select-coin">
-            Moeda
-            <select
-              data-testid="currency-input"
-              className="form-select-coin"
-              id="coin"
-              value={ currency }
-              onChange={ (e) => this.setState({ currency: e.target.value }) }
-              required
-            >
-              {coinType.map((coin) => (
-                <option id="coin" key={ coin } value={ coin }>{coin}</option>
-              ))}
-            </select>
-          </label>
-
-          <label htmlFor="pay">
-            Método de Pagamento
-            <select
-              id="pay"
-              data-testid="method-input"
-              className="form-select-pay"
-              value={ method }
-              onChange={ (e) => this.setState({ method: e.target.value }) }
-            >
-              <option value="Dinheiro">Dinheiro</option>
-              <option value="Cartão de crédito">Cartão de crédito</option>
-              <option value="Cartão de débito">Cartão de débito</option>
-            </select>
-          </label>
-
-          <label htmlFor="category">
+          <label
+            htmlFor="category"
+            className="text-blue-wallet
+          text-base font-medium"
+          >
             Categoria da despesa
             <select
               id="category"
               data-testid="tag-input"
-              className="form-select-category"
+              className="h-7 border-solid border-blue-wallet
+              text-blue-wallet rounded-md m-2 w-40"
               value={ tag }
               onChange={ (e) => this.setState({ tag: e.target.value }) }
               required
@@ -161,17 +129,79 @@ class WalletForm extends Component {
             </select>
           </label>
 
+          <label
+            htmlFor="coinValue"
+            className="text-blue-wallet
+          text-base font-medium"
+          >
+            Valor
+            <input
+              data-testid="value-input"
+              className="h-7 border-solid border-blue-wallet rounded-md m-2 w-40"
+              type="number"
+              id="coinValue"
+              format="currency"
+              name="coinValue"
+              value={ value }
+              onChange={ (e) => this.setState({ value: e.target.value }) }
+            />
+          </label>
+
+          <label
+            htmlFor="pay"
+            className="text-blue-wallet
+          text-base font-medium"
+          >
+            Método de Pagamento
+            <select
+              id="pay"
+              data-testid="method-input"
+              className="border-solid border-blue-wallet rounded-md h-7 m-2 w-56
+              text-blue-wallet"
+              value={ method }
+              onChange={ (e) => this.setState({ method: e.target.value }) }
+            >
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
+            </select>
+          </label>
+
+          <label
+            htmlFor="coin"
+            className="text-blue-wallet
+          text-base font-medium"
+          >
+            Moeda
+            <select
+              data-testid="currency-input"
+              className="border-solid border-blue-wallet rounded-md h-7 m-2 w-24
+              text-blue-wallet"
+              id="coin"
+              value={ currency }
+              onChange={ (e) => this.setState({ currency: e.target.value }) }
+              required
+            >
+              {coinType.map((coin) => (
+                <option id="coin" key={ coin } value={ coin }>{coin}</option>
+              ))}
+            </select>
+          </label>
+
           { editor ? (
             <button
               type="button"
+              className="bg-green-wallet rounded-md box-border
+              text-white font-semibold h-10 relative top-12 w-80"
               onClick={ () => this.handleEditorClick() }
             >
               Editar despesa
             </button>)
             : (
               <button
-                className="btn-expense"
                 type="button"
+                className="bg-green-wallet rounded-md box-border
+                text-white font-semibold h-10 relative top-12 w-80"
                 onClick={ () => this.handleClick() }
               >
                 Adicionar despesa
