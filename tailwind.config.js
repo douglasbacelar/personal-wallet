@@ -28,7 +28,7 @@ module.exports = {
         'green-hover-wallet': '#a7c59b',
       },
       backgroundImage: {
-        'main-picture': 'url(\'/src/foto-fundo.png\')',
+        'main-picture': 'url(\'/src/images/foto-fundo.png\')',
       },
     },
   },

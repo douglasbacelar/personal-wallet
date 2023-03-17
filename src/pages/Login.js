@@ -42,7 +42,7 @@ class Login extends React.Component {
               data-testid="email-input"
               type="email"
               className="w-full block bg-slate-200
-               rounded p-2 mb-6 placeholder-blue-500"
+               rounded p-2 mb-6 placeholder-blue-500 text-blue-wallet"
               placeholder="E-mail"
               id="userEmail"
               name="userEmail"

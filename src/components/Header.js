@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import WalletForm from './WalletForm';
-import logo from '../emoji-money.png';
-import coinImage from '../coin-image.png';
-import imageProfile from '../img-profile.png';
+import logo from '../images/emoji-money.png';
+import coinImage from '../images/coin-image.png';
+import imageProfile from '../images/img-profile.png';
 
 class Header extends Component {
   render() {

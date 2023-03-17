@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { editExpense, DELETE_EXPENSES,
   handleAction, captureInput } from '../redux/actions';
-import editBtn from '../edit-btn.png';
-import deleteBtn from '../delete-btn.png';
+import editBtn from '../images/edit-btn.png';
+import deleteBtn from '../images/delete-btn.png';
 
 class Table extends Component {
   deleteButton = (teste) => {
@@ -24,14 +24,11 @@ class Table extends Component {
   render() {
     const { infoExpenses } = this.props;
     return (
-      // bg-blue-wallet rounded-lg shadow-xl flex flex-row text-xs h-482
-      //   justify-center pl-4 pr-4 absolute top-40 w-1155  -z-1
       <div
         className="bg-blue-wallet rounded-lg shadow-2xl
         flex flex-row text-xs h-[75vh] justify-center
          pl-4 pr-4 absolute top-40 w-1155 -z-1"
       >
-        {/* relative top-64 w-1037 */}
         <table
           className="relative top-56 w-1037 flex flex-col  text-sm h-[40vh] mb-64"
         >
@@ -58,8 +55,7 @@ class Table extends Component {
               const valueConversion = Number((expense.value)
             * expense.exchangeRates[expense.currency].ask).toFixed(2);
               return (
-                <tr key={ expense.id } className=" hover:bg-green-100 rounded-xl">
-                  {/* flex items-center h-20 w-10 justify-center */}
+                <tr key={ expense.id } className="hover:bg-green-50 rounded-xl">
                   <td className="items-center h-20 w-64">
                     {' '}
                     {expense.description}
