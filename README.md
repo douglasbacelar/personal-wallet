@@ -1,4 +1,4 @@
-# 🎵 Personal Wallet app
+# 💰 Personal Wallet app
 
   <img width="100%" align="center" src="src/images/personalWallet.gif" />
 
