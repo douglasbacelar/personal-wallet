@@ -14,7 +14,7 @@ React application responsible for controlling expenses with a currency converter
 
 The main focus of the project was to practice using redux and creating asynchronous actions in the react application.
 
- Deploy: https://trybe-tunes-app.vercel.app/
+ Deploy: https://personal-wallet-mocha.vercel.app/
 
 ## 🌐 Required Skills:
 
